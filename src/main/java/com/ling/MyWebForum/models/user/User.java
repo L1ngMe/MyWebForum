@@ -12,7 +12,10 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", length = 16, nullable = false, columnDefinition = "TEXT")
     private String name;
+
+    @Column(name = "date_of_creating", nullable = false, columnDefinition = "TIMESTAMP")
     private Date dateOfCreating;
 
 

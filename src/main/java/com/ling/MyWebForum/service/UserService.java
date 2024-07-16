@@ -1,6 +1,7 @@
 package com.ling.MyWebForum.service;
 
 import com.ling.MyWebForum.models.user.User;
+import com.ling.MyWebForum.models.user.UserDTO;
 import com.ling.MyWebForum.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,15 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User createUser(User user) {
+    public User createUser(UserDTO user) {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User user) {
+    public User updateUser(Long id, UserDTO user) {
         User existingUser = userRepository.findById(id).orElse(null);
         if (existingUser != null) {
-            existingUser.setName(user.getName());
-            existingUser.setDateOfCreating(user.getDateOfCreating());
+            existingUser.setName(user.name());
+            existingUser.setDateOfCreating(user.dateOfCreating());
             return userRepository.save(existingUser);
         } else {
             return null;
